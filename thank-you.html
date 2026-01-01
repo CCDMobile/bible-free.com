@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You - Your Bible is On Its Way!</title>
+    <title>Thank You - Bible Free</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -41,16 +41,28 @@
 
         .thank-you-container {
             background: white;
-            max-width: 600px;
+            max-width: 650px;
             padding: 3rem;
             border-radius: 15px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.2);
             text-align: center;
         }
 
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
         .checkmark {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             background: var(--primary);
             border-radius: 50%;
             display: flex;
@@ -62,93 +74,172 @@
         .checkmark::after {
             content: '✓';
             color: white;
-            font-size: 3rem;
+            font-size: 3.5rem;
         }
 
         h1 {
             color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .message {
             color: var(--text-light);
             font-size: 1.1rem;
             margin-bottom: 2rem;
+            line-height: 1.9;
+        }
+
+        .encouragement {
+            background: linear-gradient(135deg, var(--cream) 0%, #f5f0e8 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .encouragement h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .encouragement p {
+            color: var(--text-light);
+            font-size: 1rem;
             line-height: 1.8;
         }
 
         .verse-box {
-            background: var(--cream);
+            background: white;
             padding: 1.5rem;
             border-radius: 10px;
             margin-bottom: 2rem;
-            border-left: 4px solid var(--accent);
+            border: 2px solid var(--accent);
         }
 
         .verse-box blockquote {
             font-family: 'Merriweather', serif;
             font-style: italic;
             color: var(--text);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
         }
 
         .verse-box cite {
-            color: var(--text-light);
-            font-size: 0.9rem;
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .next-steps {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .next-steps h4 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .next-steps p {
+            font-size: 0.95rem;
+            opacity: 0.95;
         }
 
         .home-link {
             display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.9rem 2rem;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2.5rem;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s ease;
+            font-size: 1.05rem;
         }
 
         .home-link:hover {
-            background: var(--primary-light);
+            background: #d4af37;
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
         }
 
-        .timeline {
-            margin-top: 2rem;
+        .signature {
+            margin-top: 2.5rem;
             padding-top: 2rem;
             border-top: 1px solid #eee;
-            color: var(--text-light);
-            font-size: 0.95rem;
         }
 
-        .timeline strong {
+        .signature p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature .from {
+            font-family: 'Merriweather', serif;
             color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        .signature .from span {
+            color: var(--accent);
+        }
+
+        .signature .tagline {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
 <body>
     <div class="thank-you-container">
+        <div class="logo">BIBLE <span>FREE</span></div>
         <div class="checkmark"></div>
         <h1>Your Bible is On Its Way!</h1>
+        
         <p class="message">
-            Thank you for your request. We're honored to send you a copy of God's Word. 
-            Our prayer is that as you read, you'll encounter the love of Jesus and 
-            discover the hope found in His promises.
+            We are so grateful you've taken this step. Requesting a Bible is more than just asking for a book — 
+            it's opening a door to a relationship with the God who loves you deeply and unconditionally.
         </p>
+
+        <div class="encouragement">
+            <h3>You Are Not Alone</h3>
+            <p>
+                Wherever you are in life — whether you're seeking answers, going through a difficult season, 
+                or simply curious — know that God sees you and cares for you. The Bible you'll receive contains 
+                His message of hope, grace, and love written specifically for you.
+            </p>
+        </div>
+
         <div class="verse-box">
             <blockquote>
-                "So shall my word be that goes out from my mouth; it shall not return to me empty, 
-                but it shall accomplish that which I purpose, and shall succeed in the thing for which I sent it."
+                "For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, 
+                plans to give you hope and a future."
             </blockquote>
-            <cite>— Isaiah 55:11</cite>
+            <cite>— Jeremiah 29:11</cite>
         </div>
-        <a href="https://bible-free.com" class="home-link">Return Home</a>
-        <div class="timeline">
-            <strong>What's Next?</strong><br>
-            Your Bible will typically arrive within 2-3 weeks. 
-            We can't wait for you to begin exploring God's Word!
+
+        <div class="next-steps">
+            <h4>What's Next?</h4>
+            <p>Your Bible will typically arrive within 2-3 weeks. When it arrives, we encourage you to start 
+            with the Gospel of John — it's a beautiful introduction to who Jesus is and why He came.</p>
+        </div>
+
+        <a href="https://bible-free.com" class="home-link">Return to Bible Free</a>
+
+        <div class="signature">
+            <p>With love and prayers,</p>
+            <div class="from">BIBLE <span>FREE</span></div>
+            <p class="tagline">Freely you have received; freely give. — Matthew 10:8</p>
         </div>
     </div>
 </body>
