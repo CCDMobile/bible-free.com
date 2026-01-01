@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Bible Ministry - Discover God's Word</title>
+    <link rel="icon" type="image/svg+xml" href="bible-free-icon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -36,8 +37,8 @@
 
         /* Navigation */
         nav {
-            background: var(--primary);
-            padding: 1rem 2rem;
+            background: #ffffff;
+            padding: 0.75rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -45,33 +46,45 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 60px;
+            width: auto;
+        }
+
         nav ul {
             list-style: none;
             display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 2rem;
         }
 
         nav a {
-            color: var(--cream);
+            color: #2c5530;
             text-decoration: none;
             font-size: 0.95rem;
             letter-spacing: 0.5px;
             transition: color 0.3s ease;
+            font-weight: 500;
         }
 
         nav a:hover {
-            color: var(--accent);
+            color: #c9a227;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, rgba(30, 60, 34, 0.92) 0%, rgba(44, 85, 48, 0.88) 100%),
+                        url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1600&q=80') center/cover no-repeat;
             color: white;
             text-align: center;
-            padding: 10rem 2rem 6rem;
+            padding: 12rem 2rem 6rem;
             position: relative;
             overflow: hidden;
         }
@@ -224,14 +237,17 @@
         .about-image {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             border-radius: 10px;
-            padding: 3rem;
+            padding: 2rem;
             color: white;
             text-align: center;
         }
 
-        .about-image .bible-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+        .about-image .about-img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .about-image blockquote {
@@ -392,7 +408,8 @@
 
         /* Request Form Section */
         #request {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, rgba(30, 60, 34, 0.95) 0%, rgba(44, 85, 48, 0.92) 100%),
+                        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1600&q=80') center/cover no-repeat;
             color: white;
             padding: 5rem 2rem;
         }
@@ -527,6 +544,11 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 900px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
             nav ul {
                 gap: 1.5rem;
             }
@@ -561,11 +583,19 @@
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 0.75rem 1.5rem;
+                gap: 0.5rem 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .nav-logo img {
+                height: 40px;
             }
 
             .hero {
-                padding: 8rem 1.5rem 4rem;
+                padding: 10rem 1.5rem 4rem;
             }
 
             .hero h1 {
@@ -590,13 +620,18 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#why-read">Why Read the Bible</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#request">Request a Bible</a></li>
-        </ul>
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="bible-free-logo.svg" alt="Bible Free - Freely you have received; freely give." height="50">
+            </a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#why-read">Why Read the Bible</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#request">Request a Bible</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -633,7 +668,7 @@
                 <p>Our prayer is that through reading Scripture, you will encounter the living God who loves you deeply and desires a relationship with you.</p>
             </div>
             <div class="about-image">
-                <div class="bible-icon">📖</div>
+                <img src="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?w=600&q=80" alt="Open Bible with warm lighting" class="about-img">
                 <blockquote>
                     "Your word is a lamp for my feet, a light on my path."
                 </blockquote>
@@ -880,8 +915,8 @@
             });
         });
 
-        // Address confirmation before submission
-        document.getElementById('bible-request-form').addEventListener('submit', function(e) {
+        // Address confirmation and dual submission (Formsubmit + Shippo)
+        document.getElementById('bible-request-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const firstName = document.getElementById('firstName').value;
@@ -897,6 +932,24 @@
             const confirmMessage = `Please verify your shipping address:\n\n${firstName} ${lastName}\n${address}\n${address2Line}${city}, ${state} ${zip}\n\nIs this correct?`;
             
             if (confirm(confirmMessage)) {
+                // Send to Shippo webhook (don't wait, fire and forget)
+                const webhookUrl = 'https://bible-free-shippo.vercel.app/api/webhook';
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        firstName,
+                        lastName,
+                        address,
+                        address2,
+                        city,
+                        state,
+                        zip,
+                        comments: document.getElementById('comments').value
+                    })
+                }).catch(err => console.log('Webhook error:', err));
+                
+                // Submit the form to Formsubmit (for email + redirect)
                 this.submit();
             }
         });
