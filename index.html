@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Bible Ministry - Discover God's Word</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c5530;
+            --primary-light: #3d7343;
+            --accent: #c9a227;
+            --cream: #faf8f5;
+            --warm-white: #fffef9;
+            --text: #3a3a3a;
+            --text-light: #5a5a5a;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background-color: var(--warm-white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--primary);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+            padding: 10rem 2rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            line-height: 1.3;
+        }
+
+        .hero .verse {
+            font-style: italic;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-family: 'Merriweather', serif;
+        }
+
+        .hero .verse-ref {
+            font-size: 1rem;
+            opacity: 0.8;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Promise Banner */
+        .promise-banner {
+            background: var(--cream);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .promise-banner h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .promise-banner p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .promise-banner .checkmarks {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .promise-banner .check-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .promise-banner .check-item::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--warm-white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 10px;
+            padding: 3rem;
+            color: white;
+            text-align: center;
+        }
+
+        .about-image .bible-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-image blockquote {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .about-image cite {
+            display: block;
+            margin-top: 1rem;
+            font-style: normal;
+            opacity: 0.8;
+        }
+
+        /* Why Read Section */
+        #why-read {
+            background: var(--cream);
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .reason-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .reason-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .reason-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .reason-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Resources Section */
+        #resources {
+            background: var(--warm-white);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        .resource-card .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .resource-card .card-header h3 {
+            font-size: 1.2rem;
+        }
+
+        .resource-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .resource-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .resource-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .resource-card a:hover {
+            color: var(--accent);
+        }
+
+        .resource-card a::after {
+            content: '→';
+        }
+
+        /* Additional Resources List */
+        .resources-list {
+            margin-top: 3rem;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+
+        .resources-list h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .resources-list ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .resources-list li a {
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .resources-list li a:hover {
+            background: var(--cream);
+            color: var(--primary);
+        }
+
+        .resources-list li a::before {
+            content: '📖';
+        }
+
+        /* Request Form Section */
+        #request {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        #request .section-header h2 {
+            color: white;
+        }
+
+        #request .section-header p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .form-container {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .privacy-notice {
+            background: #e8f5e9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .privacy-notice h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .privacy-notice p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer .verse {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        footer .verse-ref {
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-list ul {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem 1.5rem;
+            }
+
+            .hero {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .promise-banner .checkmarks {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#why-read">Why Read the Bible</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#request">Request a Bible</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Discover the Life-Changing<br>Power of God's Word</h1>
+            <p class="verse">"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."<span class="verse-ref">— John 3:16 (NIV)</span></p>
+            <a href="#request" class="cta-button">Request Your Free Bible</a>
+        </div>
+    </section>
+
+    <!-- Promise Banner -->
+    <div class="promise-banner">
+        <h3>Our Promise to You</h3>
+        <p>We believe everyone should have access to God's Word to develop a personal relationship with Jesus Christ and find salvation through Him. Your Bible is completely free with absolutely no obligations.</p>
+        <div class="checkmarks">
+            <span class="check-item">100% Free</span>
+            <span class="check-item">No Email Lists</span>
+            <span class="check-item">No Information Sold</span>
+            <span class="check-item">No Obligations</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2>About This Ministry</h2>
+            <p>Sharing the hope and love found in Scripture</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>We are a simple ministry with a simple mission: to put the Word of God into the hands of anyone who desires it. We believe that the Bible contains the greatest story ever told—the story of God's unfailing love for humanity and His plan for our salvation through Jesus Christ.</p>
+                <p>Whether you're exploring faith for the first time, returning after time away, or simply need a Bible of your own, we're here to help. There's no catch, no follow-up sales pitch, and no hidden agenda. Just the transformative Word of God, freely given as it was freely given to us.</p>
+                <p>Our prayer is that through reading Scripture, you will encounter the living God who loves you deeply and desires a relationship with you.</p>
+            </div>
+            <div class="about-image">
+                <div class="bible-icon">📖</div>
+                <blockquote>
+                    "Your word is a lamp for my feet, a light on my path."
+                </blockquote>
+                <cite>— Psalm 119:105 (NIV)</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Read the Bible Section -->
+    <section id="why-read">
+        <div class="section-header">
+            <h2>Why Read the Bible?</h2>
+            <p>Discover how God's Word can transform your life</p>
+        </div>
+        <div class="reasons-grid">
+            <div class="reason-card">
+                <div class="icon">🙏</div>
+                <h3>Find Salvation</h3>
+                <p>The Bible reveals God's plan of salvation through Jesus Christ. It shows us how much God loves us and the free gift of eternal life available to all who believe.</p>
+            </div>
+            <div class="reason-card">
+                <div class="icon">💡</div>
+                <h3>Gain Wisdom</h3>
+                <p>Scripture offers timeless wisdom for daily living—guidance for relationships, decisions, challenges, and every aspect of life. God's Word provides direction when we need it most.</p>
+            </div>
+            <div class="reason-card">
+                <div class="icon">❤️</div>
+                <h3>Experience God's Love</h3>
+                <p>Through the Bible, we discover the depth of God's love for us. From Genesis to Revelation, it tells the story of a God who pursues His children with relentless love.</p>
+            </div>
+            <div class="reason-card">
+                <div class="icon">🕊️</div>
+                <h3>Find Peace</h3>
+                <p>In a world full of anxiety and uncertainty, the Bible offers true peace that surpasses understanding. God's promises bring comfort and hope in every season of life.</p>
+            </div>
+            <div class="reason-card">
+                <div class="icon">🌱</div>
+                <h3>Grow Spiritually</h3>
+                <p>The Bible is spiritual nourishment for our souls. Regular time in Scripture helps us grow in faith, deepen our relationship with God, and become more like Christ.</p>
+            </div>
+            <div class="reason-card">
+                <div class="icon">✨</div>
+                <h3>Discover Your Purpose</h3>
+                <p>God has a plan and purpose for your life. Through His Word, you can discover who you were created to be and the meaningful life God has prepared for you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources">
+        <div class="section-header">
+            <h2>Bible Study Resources</h2>
+            <p>Helpful tools to deepen your understanding of Scripture</p>
+        </div>
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="card-header">
+                    <h3>Bible Gateway</h3>
+                </div>
+                <div class="card-body">
+                    <p>Access the Bible in multiple translations, search by keyword or verse, and use helpful study tools. A comprehensive resource for reading and studying Scripture online.</p>
+                    <a href="https://www.biblegateway.com" target="_blank" rel="noopener">Visit Bible Gateway</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="card-header">
+                    <h3>Blue Letter Bible</h3>
+                </div>
+                <div class="card-body">
+                    <p>Dig deeper into the original Hebrew and Greek texts with concordances, commentaries, and word studies. Perfect for serious Bible study.</p>
+                    <a href="https://www.blueletterbible.org" target="_blank" rel="noopener">Visit Blue Letter Bible</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="card-header">
+                    <h3>YouVersion Bible App</h3>
+                </div>
+                <div class="card-body">
+                    <p>Download the free Bible app for your phone or tablet. Features reading plans, audio Bible, and the ability to highlight and take notes.</p>
+                    <a href="https://www.bible.com" target="_blank" rel="noopener">Get the App</a>
+                </div>
+            </div>
+            <div class="resource-card">
+                <div class="card-header">
+                    <h3>The Bible Project</h3>
+                </div>
+                <div class="card-body">
+                    <p>Watch beautifully animated videos that explain books of the Bible, biblical themes, and key concepts. Great for visual learners.</p>
+                    <a href="https://bibleproject.com" target="_blank" rel="noopener">Watch Videos</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="resources-list">
+            <h3>Additional Study Resources</h3>
+            <ul>
+                <li><a href="https://www.gotquestions.org" target="_blank" rel="noopener">Got Questions - Biblical answers to life's questions</a></li>
+                <li><a href="https://www.desiringgod.org" target="_blank" rel="noopener">Desiring God - Articles, sermons, and devotionals</a></li>
+                <li><a href="https://www.ligonier.org" target="_blank" rel="noopener">Ligonier Ministries - Teaching and resources</a></li>
+                <li><a href="https://www.biblestudytools.com" target="_blank" rel="noopener">Bible Study Tools - Commentaries and concordances</a></li>
+                <li><a href="https://www.christianitytoday.com" target="_blank" rel="noopener">Christianity Today - News and perspectives</a></li>
+                <li><a href="https://www.ccel.org" target="_blank" rel="noopener">Christian Classics Ethereal Library - Historical writings</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Request Form Section -->
+    <section id="request">
+        <div class="section-header">
+            <h2>Request Your Free Bible</h2>
+            <p>We'd love to send you a copy of God's Word at no cost</p>
+        </div>
+        <div class="form-container">
+            <div class="privacy-notice">
+                <h4>🔒 Your Privacy Matters</h4>
+                <p>We will <strong>not</strong> retain your contact information after your Bible is shipped. You will <strong>not</strong> be added to any email list. Your information will <strong>never</strong> be sold to any company or religious group. This Bible is our gift to you—completely free with no strings attached.</p>
+            </div>
+            <form id="bible-request-form" action="https://formspree.io/f/mykzkzpo" method="POST">
+                <!-- Hidden field for redirect after submission -->
+                <input type="hidden" name="_next" value="https://bible-free.com/thank-you.html">
+                <input type="hidden" name="_subject" value="New Free Bible Request">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Street Address *</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="address2">Apartment, Suite, etc. (optional)</label>
+                    <input type="text" id="address2" name="address2">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State *</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="zip">ZIP Code *</label>
+                    <input type="text" id="zip" name="zip" required style="max-width: 200px;">
+                </div>
+                <div class="form-group">
+                    <label for="comments">Prayer Requests or Comments (optional)</label>
+                    <textarea id="comments" name="comments" placeholder="Is there anything we can pray for you about?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send My Free Bible</button>
+                <p class="form-footer">* Required fields. Your Bible will typically arrive within 2-3 weeks.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="verse">"And you will know the truth, and the truth will set you free."</p>
+        <p class="verse-ref">— John 8:32 (NIV)</p>
+        <p>Freely you have received; freely give. — Matthew 10:8</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission is handled by Formspree
+        // You'll receive an email notification for each submission
+        // To set up: 
+        // 1. Go to formspree.io and create a free account
+        // 2. Create a new form and copy your form ID
+        // 3. Replace YOUR_FORM_ID in the form action above
+    </script>
+</body>
+</html>

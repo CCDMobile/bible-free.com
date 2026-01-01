@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Your Bible is On Its Way!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c5530;
+            --primary-light: #3d7343;
+            --accent: #c9a227;
+            --cream: #faf8f5;
+            --warm-white: #fffef9;
+            --text: #3a3a3a;
+            --text-light: #5a5a5a;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            font-weight: 400;
+        }
+
+        .thank-you-container {
+            background: white;
+            max-width: 600px;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+
+        .checkmark::after {
+            content: '✓';
+            color: white;
+            font-size: 3rem;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .verse-box {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .verse-box blockquote {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            color: var(--text);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .verse-box cite {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .home-link {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .home-link:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .timeline {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .timeline strong {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="checkmark"></div>
+        <h1>Your Bible is On Its Way!</h1>
+        <p class="message">
+            Thank you for your request. We're honored to send you a copy of God's Word. 
+            Our prayer is that as you read, you'll encounter the love of Jesus and 
+            discover the hope found in His promises.
+        </p>
+        <div class="verse-box">
+            <blockquote>
+                "So shall my word be that goes out from my mouth; it shall not return to me empty, 
+                but it shall accomplish that which I purpose, and shall succeed in the thing for which I sent it."
+            </blockquote>
+            <cite>— Isaiah 55:11</cite>
+        </div>
+        <a href="https://bible-free.com" class="home-link">Return Home</a>
+        <div class="timeline">
+            <strong>What's Next?</strong><br>
+            Your Bible will typically arrive within 2-3 weeks. 
+            We can't wait for you to begin exploring God's Word!
+        </div>
+    </div>
+</body>
+</html>
