@@ -761,29 +761,29 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">First Name *</label>
-                        <input type="text" id="firstName" name="firstName" required>
+                        <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name *</label>
-                        <input type="text" id="lastName" name="lastName" required>
+                        <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="address">Street Address *</label>
-                    <input type="text" id="address" name="address" required>
+                    <input type="text" id="address" name="address" autocomplete="address-line1" required>
                 </div>
                 <div class="form-group">
                     <label for="address2">Apartment, Suite, etc. (optional)</label>
-                    <input type="text" id="address2" name="address2">
+                    <input type="text" id="address2" name="address2" autocomplete="address-line2">
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="city">City *</label>
-                        <input type="text" id="city" name="city" required>
+                        <input type="text" id="city" name="city" autocomplete="address-level2" required>
                     </div>
                     <div class="form-group">
                         <label for="state">State *</label>
-                        <select id="state" name="state" required>
+                        <select id="state" name="state" autocomplete="address-level1" required>
                             <option value="">Select State</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -846,7 +846,7 @@
                 </div>
                 <div class="form-group">
                     <label for="zip">ZIP Code *</label>
-                    <input type="text" id="zip" name="zip" required style="max-width: 200px;">
+                    <input type="text" id="zip" name="zip" autocomplete="postal-code" required style="max-width: 200px;">
                 </div>
                 <div class="form-group">
                     <label for="comments">Prayer Requests or Comments (optional)</label>
@@ -880,12 +880,26 @@
             });
         });
 
-        // Form submission is handled by Formspree
-        // You'll receive an email notification for each submission
-        // To set up: 
-        // 1. Go to formspree.io and create a free account
-        // 2. Create a new form and copy your form ID
-        // 3. Replace YOUR_FORM_ID in the form action above
+        // Address confirmation before submission
+        document.getElementById('bible-request-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const address = document.getElementById('address').value;
+            const address2 = document.getElementById('address2').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            const zip = document.getElementById('zip').value;
+            
+            const address2Line = address2 ? address2 + '\n' : '';
+            
+            const confirmMessage = `Please verify your shipping address:\n\n${firstName} ${lastName}\n${address}\n${address2Line}${city}, ${state} ${zip}\n\nIs this correct?`;
+            
+            if (confirm(confirmMessage)) {
+                this.submit();
+            }
+        });
     </script>
 </body>
 </html>
