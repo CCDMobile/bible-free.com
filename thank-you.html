@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Bible Free</title>
+    <link rel="icon" type="image/svg+xml" href="bible-free-icon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -28,9 +29,6 @@
             line-height: 1.7;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 2rem;
         }
 
@@ -39,25 +37,34 @@
             font-weight: 400;
         }
 
-        .thank-you-container {
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .thank-you-card {
             background: white;
-            max-width: 650px;
             padding: 3rem;
             border-radius: 15px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.2);
             text-align: center;
+            margin-bottom: 2rem;
         }
 
         .logo {
             font-family: 'Merriweather', serif;
             font-size: 1.5rem;
-            color: var(--primary);
             margin-bottom: 1.5rem;
-            letter-spacing: 1px;
         }
 
-        .logo span {
+        .logo .bible {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .logo .free {
             color: var(--accent);
+            font-weight: 700;
         }
 
         .checkmark {
@@ -90,65 +97,137 @@
             line-height: 1.9;
         }
 
-        .encouragement {
-            background: linear-gradient(135deg, var(--cream) 0%, #f5f0e8 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-        }
-
-        .encouragement h3 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .encouragement p {
-            color: var(--text-light);
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
         .verse-box {
-            background: white;
+            background: var(--cream);
             padding: 1.5rem;
             border-radius: 10px;
             margin-bottom: 2rem;
-            border: 2px solid var(--accent);
+            border-left: 4px solid var(--accent);
         }
 
         .verse-box blockquote {
             font-family: 'Merriweather', serif;
             font-style: italic;
             color: var(--text);
-            font-size: 1.15rem;
-            margin-bottom: 0.75rem;
-            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
         }
 
         .verse-box cite {
-            color: var(--primary);
+            color: var(--accent);
             font-size: 0.95rem;
             font-weight: 600;
         }
 
-        .next-steps {
+        .shipping-info {
             background: var(--primary);
             color: white;
-            padding: 1.5rem;
+            padding: 1.25rem;
             border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .shipping-info h4 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .shipping-info p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        /* Next Steps Section */
+        .next-steps-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .next-steps-section h2 {
+            color: var(--primary);
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .next-steps-subtitle {
+            text-align: center;
+            color: var(--text-light);
             margin-bottom: 2rem;
         }
 
-        .next-steps h4 {
-            font-family: 'Merriweather', serif;
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .step-card {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .step-card.highlight {
+            background: var(--primary);
+            color: white;
+        }
+
+        .step-card.highlight h3 {
+            color: white;
+        }
+
+        .step-card.highlight p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .step-card.highlight a {
+            color: var(--accent);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-card h3 {
+            color: var(--primary);
             font-size: 1.1rem;
             margin-bottom: 0.75rem;
         }
 
-        .next-steps p {
+        .step-card p {
+            color: var(--text-light);
             font-size: 0.95rem;
-            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .step-card a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .step-card a:hover {
+            text-decoration: underline;
+        }
+
+        .phone-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            margin-top: 0.5rem;
         }
 
         .home-link {
@@ -161,6 +240,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             font-size: 1.05rem;
+            margin-top: 2rem;
         }
 
         .home-link:hover {
@@ -170,76 +250,125 @@
         }
 
         .signature {
-            margin-top: 2.5rem;
-            padding-top: 2rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid #eee;
+            text-align: center;
         }
 
         .signature p {
             color: var(--text-light);
             font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .signature .from {
-            font-family: 'Merriweather', serif;
-            color: var(--primary);
-            font-size: 1.3rem;
-            font-weight: 400;
-        }
-
-        .signature .from span {
-            color: var(--accent);
+            margin-bottom: 0.25rem;
         }
 
         .signature .tagline {
-            color: var(--text-light);
             font-style: italic;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-top: 0.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .thank-you-card, .next-steps-section {
+                padding: 2rem 1.5rem;
+            }
+
+            body {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="thank-you-container">
-        <div class="logo">BIBLE <span>FREE</span></div>
-        <div class="checkmark"></div>
-        <h1>Your Bible is On Its Way!</h1>
-        
-        <p class="message">
-            We are so grateful you've taken this step. Requesting a Bible is more than just asking for a book — 
-            it's opening a door to a relationship with the God who loves you deeply and unconditionally.
-        </p>
-
-        <div class="encouragement">
-            <h3>You Are Not Alone</h3>
-            <p>
-                Wherever you are in life — whether you're seeking answers, going through a difficult season, 
-                or simply curious — know that God sees you and cares for you. The Bible you'll receive contains 
-                His message of hope, grace, and love written specifically for you.
+    <div class="container">
+        <!-- Thank You Card -->
+        <div class="thank-you-card">
+            <div class="logo">
+                <span class="bible">BIBLE</span> <span class="free">FREE</span>
+            </div>
+            <div class="checkmark"></div>
+            <h1>Your Bible is On Its Way!</h1>
+            
+            <p class="message">
+                We're so grateful you've taken this step. Whether you're exploring faith for the first time 
+                or returning after time away, we believe this Bible can change your life. God loves you 
+                and wants a relationship with you.
             </p>
+
+            <div class="verse-box">
+                <blockquote>
+                    "For I know the plans I have for you," declares the Lord, "plans to prosper you 
+                    and not to harm you, plans to give you hope and a future."
+                </blockquote>
+                <cite>— Jeremiah 29:11</cite>
+            </div>
+
+            <div class="shipping-info">
+                <h4>📦 What's Next?</h4>
+                <p>Your Bible will typically arrive within 2-3 weeks. We've included a reading guide 
+                to help you get started!</p>
+            </div>
         </div>
 
-        <div class="verse-box">
-            <blockquote>
-                "For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, 
-                plans to give you hope and a future."
-            </blockquote>
-            <cite>— Jeremiah 29:11</cite>
-        </div>
+        <!-- Next Steps Section -->
+        <div class="next-steps-section">
+            <h2>While You Wait...</h2>
+            <p class="next-steps-subtitle">Here are some ways to start your journey right now</p>
 
-        <div class="next-steps">
-            <h4>What's Next?</h4>
-            <p>Your Bible will typically arrive within 2-3 weeks. When it arrives, we encourage you to start 
-            with the Gospel of John — it's a beautiful introduction to who Jesus is and why He came.</p>
-        </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">📖</div>
+                    <h3>Download Our Reading Guide</h3>
+                    <p>Not sure where to start? Download our free 
+                    <a href="bible-reading-guide.pdf" target="_blank">Bible Reading Guide (PDF)</a> 
+                    for tips on how to read and understand God's Word.</p>
+                </div>
 
-        <a href="https://bible-free.com" class="home-link">Return to Bible Free</a>
+                <div class="step-card">
+                    <div class="step-icon">📱</div>
+                    <h3>Get a Free Bible App</h3>
+                    <p>Get the <a href="https://www.bible.com/app" target="_blank">YouVersion Bible App</a> — 
+                    it's free and has reading plans designed for beginners.</p>
+                </div>
 
-        <div class="signature">
-            <p>With love and prayers,</p>
-            <div class="from">BIBLE <span>FREE</span></div>
-            <p class="tagline">Freely you have received; freely give. — Matthew 10:8</p>
+                <div class="step-card">
+                    <div class="step-icon">📖</div>
+                    <h3>Start Reading Online</h3>
+                    <p>Can't wait for your Bible? Start reading the 
+                    <a href="https://www.biblegateway.com/passage/?search=John+1&version=NIV" target="_blank">Book of John</a> 
+                    online right now!</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">⛪</div>
+                    <h3>Find a Local Church</h3>
+                    <p>You weren't meant to do this alone. Visit 
+                    <a href="https://www.churchfinder.com" target="_blank">ChurchFinder.com</a> 
+                    to find a welcoming church near you.</p>
+                </div>
+
+                <div class="step-card highlight">
+                    <div class="step-icon">📞</div>
+                    <h3>Want to Talk to Someone?</h3>
+                    <p>Have questions? Made a decision to follow Christ? Trained counselors are available 24/7:</p>
+                    <span class="phone-number">1-888-388-2683</span>
+                    <p style="margin-top: 0.5rem;"><a href="https://peacewithgod.net" target="_blank">PeaceWithGod.net</a></p>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="https://bible-free.com" class="home-link">Return to Bible Free</a>
+            </div>
+
+            <div class="signature">
+                <p>With love and prayers,</p>
+                <p><strong style="color: var(--primary);">BIBLE</strong> <strong style="color: var(--accent);">FREE</strong></p>
+                <p class="tagline">"Freely you have received; freely give." — Matthew 10:8</p>
+            </div>
         </div>
     </div>
 </body>
